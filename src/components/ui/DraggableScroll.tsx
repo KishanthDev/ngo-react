@@ -1,49 +1,53 @@
 'use client';
 
-import React, { useRef, useState } from 'react';
-import type { MouseEvent } from 'react';
+import React, { useState, forwardRef } from 'react';
+import type { MouseEvent, UIEvent } from 'react';
 
 interface DraggableScrollProps {
   children: React.ReactNode;
   className?: string;
+  onScroll?: (e: UIEvent<HTMLDivElement>) => void;
 }
 
-export const DraggableScroll: React.FC<DraggableScrollProps> = ({ children, className = '' }) => {
-  const scrollRef = useRef<HTMLDivElement>(null);
-  const [isDragging, setIsDragging] = useState(false);
-  const [startX, setStartX] = useState(0);
-  const [scrollLeft, setScrollLeft] = useState(0);
+export const DraggableScroll = forwardRef<HTMLDivElement, DraggableScrollProps>(
+  ({ children, className = '', onScroll }, ref) => {
+    const [isDragging, setIsDragging] = useState(false);
+    const [startX, setStartX] = useState(0);
+    const [scrollLeft, setScrollLeft] = useState(0);
 
-  const handleMouseDown = (e: MouseEvent) => {
-    if (!scrollRef.current) return;
-    setIsDragging(true);
-    setStartX(e.pageX - scrollRef.current.offsetLeft);
-    setScrollLeft(scrollRef.current.scrollLeft);
-  };
+    const handleMouseDown = (e: MouseEvent<HTMLDivElement>) => {
+      setIsDragging(true);
+      setStartX(e.pageX - e.currentTarget.offsetLeft);
+      setScrollLeft(e.currentTarget.scrollLeft);
+    };
 
-  const handleMouseLeave = () => setIsDragging(false);
-  const handleMouseUp = () => setIsDragging(false);
+    const handleMouseLeave = () => setIsDragging(false);
+    const handleMouseUp = () => setIsDragging(false);
 
-  const handleMouseMove = (e: MouseEvent) => {
-    if (!isDragging || !scrollRef.current) return;
-    e.preventDefault();
-    const x = e.pageX - scrollRef.current.offsetLeft;
-    const walk = (x - startX) * 1.5; // Scroll speed multiplier
-    scrollRef.current.scrollLeft = scrollLeft - walk;
-  };
+    const handleMouseMove = (e: MouseEvent<HTMLDivElement>) => {
+      if (!isDragging) return;
+      e.preventDefault();
+      const x = e.pageX - e.currentTarget.offsetLeft;
+      const walk = (x - startX) * 1.5; // Scroll speed multiplier
+      e.currentTarget.scrollLeft = scrollLeft - walk;
+    };
 
-  return (
-    <div
-      ref={scrollRef}
-      onMouseDown={handleMouseDown}
-      onMouseLeave={handleMouseLeave}
-      onMouseUp={handleMouseUp}
-      onMouseMove={handleMouseMove}
-      className={`flex overflow-x-auto no-scrollbar snap-x snap-mandatory select-none ${
-        isDragging ? 'cursor-grabbing snap-none scroll-auto' : 'cursor-grab scroll-smooth'
-      } ${className}`}
-    >
-      {children}
-    </div>
-  );
-};
+    return (
+      <div
+        ref={ref}
+        onScroll={onScroll}
+        onMouseDown={handleMouseDown}
+        onMouseLeave={handleMouseLeave}
+        onMouseUp={handleMouseUp}
+        onMouseMove={handleMouseMove}
+        className={`flex overflow-x-auto no-scrollbar snap-x snap-mandatory select-none ${
+          isDragging ? 'cursor-grabbing snap-none scroll-auto' : 'cursor-grab scroll-smooth'
+        } ${className}`}
+      >
+        {children}
+      </div>
+    );
+  }
+);
+
+DraggableScroll.displayName = 'DraggableScroll';

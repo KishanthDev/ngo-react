@@ -6,13 +6,15 @@ import { Footer } from '../components/layout/Footer';
 import { HeroSection } from '../components/sections/HeroSection';
 import { ImpactSection } from '../components/sections/ImpactSection';
 import { ContactSection } from '../components/sections/ContactSection';
+import { HeroSlider } from '../components/sections/HeroSlides';
 
 export default function Home() {
   return (
-    <main className="bg-gray-50 min-h-screen pt-[86px]">
+    <main className="bg-gray-50 ">
       <Navbar />
 
       <HeroSection />
+      <HeroSlider />
 
       {/* Monthly Missions Grid */}
       <section id="monthly-missions" className="max-w-[1216px] mx-auto px-4 sm:px-6 lg:px-8 pt-16">
