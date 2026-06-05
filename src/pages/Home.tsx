@@ -7,6 +7,9 @@ import { HeroSection } from '../components/sections/HeroSection';
 import { ImpactSection } from '../components/sections/ImpactSection';
 import { ContactSection } from '../components/sections/ContactSection';
 import { HeroSlider } from '../components/sections/HeroSlides';
+import AboutSection from '../components/sections/AboutUsSection';
+import { ProjectsSection } from '../components/sections/ProjectSection';
+import { NGOSection } from '../components/sections/NGO_Partners';
 
 export default function Home() {
   return (
@@ -14,7 +17,10 @@ export default function Home() {
       <Navbar />
 
       <HeroSection />
+      <AboutSection />
       <HeroSlider />
+      <ProjectsSection />
+
 
       {/* Monthly Missions Grid */}
       <section id="monthly-missions" className="max-w-[1216px] mx-auto px-4 sm:px-6 lg:px-8 pt-16">
@@ -54,6 +60,7 @@ export default function Home() {
         </div>
       </section>
 
+      <NGOSection />
       <ImpactSection />
 
       {/* Dynamic Grabbing Blocks */}

@@ -12,7 +12,7 @@ export const BlogSection = () => {
     <section id="blog" className="w-full bg-[#f8f8f8] py-16 overflow-hidden">
       <div className="max-w-7xl mx-auto px-6 lg:px-10">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 items-start">
-          
+
           <div className="space-y-5">
             <h2 className="text-4xl md:text-5xl font-bold text-gray-900">Blog</h2>
             <p className="text-gray-600 text-lg leading-relaxed max-w-md">
@@ -37,7 +37,7 @@ export const BlogSection = () => {
               ))}
             </DraggableScroll>
           </div>
-          
+
         </div>
       </div>
     </section>
