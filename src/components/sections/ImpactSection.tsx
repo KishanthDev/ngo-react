@@ -1,5 +1,3 @@
-import React from 'react';
-
 export const ImpactSection = () => {
   return (
     <section id="impact" className="w-full bg-white border-y border-gray-100 py-16 lg:py-24">

@@ -1,4 +1,3 @@
-import React from 'react';
 import { Accordion } from '../ui/Accordion';
 
 const FAQ_DATA = [

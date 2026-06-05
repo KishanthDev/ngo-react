@@ -1,5 +1,3 @@
-import React from 'react';
-
 export const ContactSection = () => {
   return (
     <section id="contact" className="bg-white mb-16 py-16 lg:py-24">
