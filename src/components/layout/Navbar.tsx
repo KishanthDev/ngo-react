@@ -231,13 +231,59 @@ export const Navbar = () => {
               </div>
             </details>
 
-            <a href="#impact" className="text-lg py-3 border-b">
+            <a
+              href="#impact"
+              className="text-lg py-3 border-b"
+              onClick={() => setMobileOpen(false)}
+            >
               Our Impact
             </a>
 
-            <a href="#what-we-do" className="text-lg py-3 border-b">
+            <a
+              href="#what-we-do"
+              className="text-lg py-3 border-b"
+              onClick={() => setMobileOpen(false)}
+            >
               Projects
             </a>
+            
+            {/* About */}
+            <details className="border-b border-gray-100 pb-2">
+              <summary className="text-lg font-medium py-3 cursor-pointer">
+                About
+              </summary>
+
+              <div className="pl-4 pb-4 flex flex-col space-y-3">
+                <a href="#about-us" onClick={() => setMobileOpen(false)}>
+                  Our Story
+                </a>
+
+                <a href="#blog" onClick={() => setMobileOpen(false)}>
+                  Blog
+                </a>
+
+                <a href="#contact" onClick={() => setMobileOpen(false)}>
+                  Contact Us
+                </a>
+              </div>
+            </details>
+
+            {/* More */}
+            <details className="border-b border-gray-100 pb-2">
+              <summary className="text-lg font-medium py-3 cursor-pointer">
+                More
+              </summary>
+
+              <div className="pl-4 pb-4 flex flex-col space-y-3">
+                <a href="#ngo-partners" onClick={() => setMobileOpen(false)}>
+                  Our Partners
+                </a>
+
+                <a href="#faq" onClick={() => setMobileOpen(false)}>
+                  FAQs
+                </a>
+              </div>
+            </details>
 
             <div className="pt-8">
               <button className="w-full bg-rose-500 text-white font-semibold py-3.5 rounded-full">

@@ -1,18 +1,22 @@
 @import "tailwindcss";
 
-
+html {
+    scroll-padding-top: 60px;
+    /* your navbar height */
+    scroll-behavior: smooth;
+}
 
 /* Hide scrollbar - Chrome, Safari, Edge */
 .no-scrollbar::-webkit-scrollbar {
-  display: none;
+    display: none;
 }
 
 /* Hide scrollbar - Firefox */
 .no-scrollbar {
-  scrollbar-width: none;
+    scrollbar-width: none;
 }
 
 /* Hide scrollbar - IE & old Edge */
 .no-scrollbar {
-  -ms-overflow-style: none;
+    -ms-overflow-style: none;
 }

@@ -1,6 +1,6 @@
 export const ImpactSection = () => {
   return (
-    <section id="impact" className="w-full bg-white border-y border-gray-100 py-16 lg:py-24">
+    <section id="impact" className="w-full bg-white border-y border-gray-100 py-12 lg:py-12">
       <div className="max-w-[1216px] mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex flex-col lg:flex-row items-center justify-between gap-12 lg:gap-8">
           
