@@ -22,7 +22,7 @@ export function useUpload() {
       const message = err?.message || 'An error occurred during file transmission.';
       setError(message);
       return null;
-    } {
+    } finally {
       setIsUploading(false);
     }
   }, []);
