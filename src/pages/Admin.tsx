@@ -1,30 +1,20 @@
 import React, { useState, useCallback, useRef } from 'react';
-// Import the custom hook (adjust the path to match your project structure)
 import { useUpload } from '../service/useUpload';
+import {
+  WEBSITE_SECTIONS,
+  UPLOAD_FOLDER,
+} from '../config/uploadConfig';
 
 // --- Types ---
 interface FileWithPreview extends File {
   preview: string;
 }
 
-interface Section {
-  id: string;
-  name: string;
-}
-
-// Pre-defined sections for your website
-const WEBSITE_SECTIONS: Section[] = [
-  { id: 'hero_banner', name: 'Hero Banner' },
-  { id: 'project_gallery', name: 'Project Gallery' },
-  { id: 'about_us', name: 'About Us' },
-  { id: 'testimonials', name: 'Testimonials' },
-];
-
 export default function AdminImageUploader() {
   const [activeSection, setActiveSection] = useState<string>(WEBSITE_SECTIONS[0].id);
   const [stagedFiles, setStagedFiles] = useState<FileWithPreview[]>([]);
   const [isDragging, setIsDragging] = useState(false);
-  const [uploadedIndex, setUploadedIndex] = useState(0); // Tracks batch progress
+  const [uploadedIndex, setUploadedIndex] = useState(0);
 
   const fileInputRef = useRef<HTMLInputElement>(null);
 
@@ -62,7 +52,7 @@ export default function AdminImageUploader() {
       const file = stagedFiles[i];
 
       // Pass activeSection as the folder name parameter to Cloudinary
-      const result = await upload(file, `ngo/${activeSection}`);
+      const result = await upload(file, `${UPLOAD_FOLDER}/${activeSection}`);
 
       if (!result) {
         // Stop the batch if a critical error occurs, or change to `continue` to skip
